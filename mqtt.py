@@ -15,9 +15,9 @@ def on_message(mqttc, obj, msg):
 		j = json.loads(payload)		 # payload는 관심 있는 부분으로 곧 '내가 비용을 지불코자 하는 적재량'을 뜻 한다. 
 		print(j['message'])
 
-mqtt_client = mqtt.Client(client_id=THING_NAME, clean_session=TRUE) ,,, 메세지를 보내는 클라이언트를 설정한다. 맨 처음 정한 사물의 이름이다.
-mqtt_client.on_connect = on_connect ,,, 연결을 활성화 시킨다. 사물의 이름으로 접근해서 on_connect 함수를 실행 시킨다.
-mqtt_client.on_message = on_message ,,, 메세지 보낸다.
+mqtt_client = mqtt.Client(client_id=THING_NAME, clean_session=TRUE) # 메세지를 보내는 클라이언트를 설정한다. 맨 처음 정한 사물의 이름이다.
+mqtt_client.on_connect = on_connect()  # 연결을 활성화 시킨다. 사물의 이름으로 접근해서 on_connect 함수를 실행 시킨다.
+mqtt_client.on_message = on_message()  # 메세지 보낸다.
 
 mqtt_client.tls_set('./certs/ca.pem', certfile='./certs/cert.pem.crt',
 	keyfile='./certs/private.pem.key', tls_version=ssl.PROTOCOL_TLSv1_2, ciphers=None)
